@@ -7,6 +7,7 @@ import PetsRouter from '../modules/pets/router.js';
 import ClientRouter from '../modules/users/client/router.js';
 import AdminRouter from '../modules/users/admin/router.js';
 import TypePetsRouter from '../modules/typePets/router.js';
+import VaccinesRouter from '../modules/vaccines/router.js';
 import { fileURLToPath } from 'url';
 import { authMiddleware } from '../middlewares/authMiddleware.js';
 import { checkRole } from '../middlewares/checkRole.js';
@@ -26,6 +27,7 @@ app.use('/API/auth', AuthRouter);
 app.use('/API/pets', authMiddleware, PetsRouter);
 app.use('/API/users', authMiddleware, ClientRouter);
 app.use('/API/type-pets', authMiddleware, TypePetsRouter);
+app.use('/API/vaccines', authMiddleware, VaccinesRouter);
 
 app.use('/API/admin/users', authMiddleware, checkRole([ 1 ]), AdminRouter);
 
