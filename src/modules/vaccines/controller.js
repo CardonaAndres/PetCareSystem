@@ -65,22 +65,6 @@ export const registerVaccine = async (req, res) => {
 
         const pet = await PetModel.getPetByID(pet_ID, req.user.user_ID);
         if(!pet) return res.status(404).json({ message : 'La mascota no ha sido encontrada' })
-
-        const existVeterinarian = await VeterinarianModel.getVeterinarianByNumDoc(num_doc_veterinarian)
-
-        if(existVeterinarian){
-            await VaccinesModel.registerVaccine({
-                pet_ID,
-                veterinarian_ID : existVeterinarian.veterinarian_ID,
-                name,
-                application_date,
-                next_dose
-            });
-    
-            return res.status(201).json({
-                message : 'Información guardada correctamente'
-            });
-        }
  
        const veterinarian_ID = await VeterinarianModel.registerVeterinarian({
             num_doc_veterinarian, 

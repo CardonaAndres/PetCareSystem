@@ -1,0 +1,24 @@
+# Ignorar node_modules para evitar copiar dependencias ya instaladas
+node_modules
+
+# Ignorar archivos de logs
+*.log
+
+# Ignorar configuraciones del entorno local
+.env
+
+# Ignorar la carpeta de dependencias globales si existe
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Ignorar carpetas específicas de tu editor
+.idea
+.vscode
+
+# Ignorar el contenedor de dependencias de Docker (si existe)
+docker-compose.yml
+
+# Ignorar cualquier archivo o carpeta temporal del sistema
+.DS_Store
+Thumbs.db

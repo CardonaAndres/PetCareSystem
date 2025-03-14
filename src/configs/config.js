@@ -6,11 +6,10 @@ export const colombianPhoneRegex = /^3[0-9]{9}$/;
 export const nameRegex = /^[a-zA-ZÀ-ÿ\s\-]+$/; 
 export const isProduction = false;
 
-
 export const SERVER_URL = isProduction ? '' : 'http://localhost:5010'
 
 export const database_credentials = {
-    host : 'localhost',
+    host : 'host.docker.internal',
     user : 'root',
     password : '',
     database : 'pets_db',
