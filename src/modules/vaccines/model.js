@@ -4,7 +4,7 @@ const conn = await connDataBase();
 
 export const getAllVaccinesByPet = async (user_ID, pet_ID, offset) => {
     const [ vaccines ] = await conn.query(
-        `SELECT tp.specie, tp.race, tp.description, p.*, vt.* , v.name, v.application_date,
+        `SELECT tp.specie, tp.race, tp.description, p.*, vt.*, v.name, v.vaccine_ID, v.application_date,
          v.next_dose FROM type_pets tp INNER JOIN pets p ON tp.type_pet_ID = p.type_pet_ID
          INNER JOIN vaccines v ON p.pet_ID = v.pet_ID  INNER JOIN veterinarians vt 
          ON v.vaccine_ID = vt.veterinarian_ID 

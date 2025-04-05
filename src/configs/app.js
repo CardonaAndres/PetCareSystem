@@ -5,6 +5,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import AuthRouter from '../modules/auth/router.js';
 import PetsRouter from '../modules/pets/router.js';
+import PostsRouter from '../modules/posts/router.js';
 import ClientRouter from '../modules/users/client/router.js';
 import AdminRouter from '../modules/users/admin/router.js';
 import TypePetsRouter from '../modules/typePets/router.js';
@@ -38,6 +39,7 @@ app.use('/API/type-pets', authMiddleware, TypePetsRouter);
 app.use('/API/vaccines', authMiddleware, VaccinesRouter);
 app.use('/API/appointments', authMiddleware, AppoinmentsRouter);
 
+app.use('/API/posts', authMiddleware, checkRole([ 1 ]), PostsRouter);
 app.use('/API/admin/users', authMiddleware, checkRole([ 1 ]), AdminRouter);
 
 export default app;
