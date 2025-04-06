@@ -4,8 +4,8 @@ export const getAllPosts = async (req, res) => {
     try {
         const { page = 1 } = req.query; 
         const offset = (page - 1) * 9; 
-        const totalPosts = await PostsModel.totalPosts(req.user.user_ID);
-        const posts = await PostsModel.getAllPostsPaginated(req.user.user_ID, offset);
+        const totalPosts = await PostsModel.totalPosts();
+        const posts = await PostsModel.getAllPostsPaginated(offset);
         const totalPages = Math.ceil(totalPosts / 9);
 
         return res.status(200).json({

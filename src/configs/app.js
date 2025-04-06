@@ -38,8 +38,8 @@ app.use('/API/users', authMiddleware, ClientRouter);
 app.use('/API/type-pets', authMiddleware, TypePetsRouter);
 app.use('/API/vaccines', authMiddleware, VaccinesRouter);
 app.use('/API/appointments', authMiddleware, AppoinmentsRouter);
+app.use('/API/posts', authMiddleware, PostsRouter);
 
-app.use('/API/posts', authMiddleware, checkRole([ 1 ]), PostsRouter);
 app.use('/API/admin/users', authMiddleware, checkRole([ 1 ]), AdminRouter);
 
 export default app;

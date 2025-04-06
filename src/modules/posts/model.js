@@ -2,19 +2,18 @@ import { connDataBase } from '../../utils/database.js';
 
 const conn = await connDataBase();
 
-export const getAllPostsPaginated = async (user_ID, offset) => {
+export const getAllPostsPaginated = async (offset) => {
     const [ posts ] = await conn.query(
-        `SELECT * FROM posts WHERE user_ID = ? LIMIT 9 OFFSET ?`,
-        [user_ID, offset]
+        `SELECT * FROM posts LIMIT 9 OFFSET ?`,
+        [offset]
     );
 
     return posts;
 }
 
-export const totalPosts = async (user_ID) => {
+export const totalPosts = async () => {
     const [ total ] = await conn.query(
-        `SELECT COUNT(*) as total FROM posts WHERE user_ID = ?`,
-        [user_ID]
+        `SELECT COUNT(*) as total FROM posts`,[]
     );
 
     return total[0].total;
