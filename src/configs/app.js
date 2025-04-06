@@ -33,12 +33,12 @@ app.use(cors({
 }));
 
 app.use('/API/auth', AuthRouter);
+app.use('/API/posts', PostsRouter);
 app.use('/API/pets', authMiddleware, PetsRouter);
 app.use('/API/users', authMiddleware, ClientRouter);
 app.use('/API/type-pets', authMiddleware, TypePetsRouter);
 app.use('/API/vaccines', authMiddleware, VaccinesRouter);
 app.use('/API/appointments', authMiddleware, AppoinmentsRouter);
-app.use('/API/posts', authMiddleware, PostsRouter);
 
 app.use('/API/admin/users', authMiddleware, checkRole([ 1 ]), AdminRouter);
 
